@@ -1,7 +1,4 @@
-
 <?php
-
-
 
 // Sécurité
 if (!defined('_ECRIRE_INC_VERSION')) return;
@@ -17,8 +14,8 @@ function formulaires_configurer_newsletters_notifications_saisies_dist(){
     //Les Lists disponibles
     $config_lists=lire_config('mailsubscribers/lists');
     $lists=array();
-     foreach($config_lists AS $id_bak=>$titre){
-         $lists[$id_bak]=$titre;
+     foreach($config_lists AS $id_bak=>$donnees){
+         $lists[$id_bak]=$donnees['titre'];
      }
      
 	$choix_expediteurs = array(
@@ -46,7 +43,8 @@ function formulaires_configurer_newsletters_notifications_saisies_dist(){
                         'datas' => $lists,
                         'cacher_option_intro' => 'on',
                         'label' => _T('newsletters_notifications:label_choix_listes'),   
-                        'explication' => _T('newsletters_notifications:explication_choix_listes'),                                                
+                        'explication' => _T('newsletters_notifications:explication_choix_listes'),
+                        'defaut' => $config['lists'],                                                
                     )
                 ),                                             
             )            
@@ -106,8 +104,8 @@ function formulaires_configurer_newsletters_notifications_saisies_dist(){
 					'saisie' => 'selection',
 					'options' => array(
 						'nom' => 'vendeur',
-						'label' => _T('reservation:notifications_vendeur_label'),
-						'explication' => _T('reservation:notifications_vendeur_explication'),
+						'label' => _T('newsletters_notifications:notifications_destinateur_label'),
+						'explication' => _T('newsletters_notifications:notifications_destinateur_label_explication'),
 						'cacher_option_intro' => 'on',
 						'defaut' => $config['vendeur'],
 						'datas' => array(
@@ -152,30 +150,8 @@ function formulaires_configurer_newsletters_notifications_saisies_dist(){
 						'defaut' => $config['vendeur_email'],
 						'afficher_si' => '@vendeur@ == "email"',
 					)
-				),
-				array(
-					'saisie' => 'oui_non',
-					'options' => array(
-						'nom' => 'client',
-						'label' => _T('reservation:notifications_client_label'),
-						'explication' => _T('reservation:notifications_client_explication'),
-						'defaut' => $config['client'],
-					)
-				),
-				array(
-					'saisie' => 'selection_multiple',
-					'options' => array(
-						'nom' => 'envoi_separe',
-						'label' => _T('reservation:notifications_envoi_separe'),
-						'explication' => _T('reservation:notifications_envoi_separe_explication'),
-						'cacher_option_intro' => 'on',
-						'datas' => $statuts_selectionnees,
-						'defaut' => $config['envoi_separe']
-					)
-				)															
+				),														
 			)
 		)
 	);
 }
-
-?>
