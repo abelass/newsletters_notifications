@@ -12,12 +12,14 @@
 if (!defined('_ECRIRE_INC_VERSION')) return;
 	
 
-/*
- * Un fichier de pipelines permet de regrouper
- * les fonctions de branchement de votre plugin
- * sur des pipelines existants.
- */
-
+function newsletters_notifications_formulaire_traiter($flux){
+	// envoyer un notification de l'inscription
+	if ($flux['args']['form'] == 'newsletter_subscribe') {
+		echo serialize($flux);
+		if(isset($flux['data']['message_ok']))echo 'ok;'
+	}
+	return $flux;
+}
 
 
 

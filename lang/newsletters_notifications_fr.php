@@ -17,6 +17,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	
 	// N
 	'newsletters_notifications_titre' => 'Notifications pour Newsletters',
+	'notifications_destinateur_label' => 'Destinateur',	
+	'notifications_destinateur_label_explication' => 'Choisir le(s) destinataire(s) des notifications',			
 	'notifications_expediteur_administrateur_label' => 'Choisir un administrateur :',
 	'notifications_expediteur_choix_administrateur' => 'un administrateur',
 	'notifications_expediteur_choix_email' => 'un email',
@@ -31,6 +33,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// T
 	'titre_page_configurer_newsletters_notifications' => 'Paramètres Notifications pour Newsletters',
+	
+	//U
+	'une_inscription_sur' => 'Une inscription sur @nom@',
 );
 
 ?>
