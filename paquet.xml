@@ -1,0 +1,45 @@
+<paquet
+	prefix="newsletters_notifications"
+	categorie="communication"
+	version="1.0.0"
+	etat="dev"
+	compatibilite="[3.0.17;3.0.*]"
+	logo="prive/themes/spip/images/newsletters_notifications-64.png"
+	documentation=""
+	schema="1.0.0" 
+>
+	<!--
+		Paquet genere le 2014-09-23 10:18:54
+		(Vous pouvez bien entendu supprimer ces commentaires) 
+	-->
+
+	<nom>Notifications pour Newsletters</nom>
+
+	<!-- cette balise peut etre presente plusieurs fois s'il y a plusieurs auteurs --> 
+	<auteur lien='https://websimple.be/'>Rainer</auteur>
+
+	<licence>GNU/GPL</licence>
+
+	<!--
+		Exemple de commandes
+		* dependances
+		<necessite nom="saisies" compatibilite="[1.21.0;]" />
+		<utilise nom="saisies" compatibilite="[1.21.0;]" />
+		<lib nom="simplehtmldom" lien="http://chemin_vers_archive.zip" />
+		* pipelines
+		<pipeline nom="autoriser" inclure="newsletters_notifications_autorisations.php" />
+		<pipeline nom="insert_head" inclure="newsletters_notifications_pipelines.php" />
+		* declarer un pipeline 
+		<pipeline nom="mon_pipeline" action="" />
+		* parents de menus de SPIP :
+				menu_accueil (A eviter), menu_edition, menu_publication,
+				menu_activite, menu_squelette, menu_administration, menu_configuration 
+		<menu nom="newsletters_notifications" titre="newsletters_notifications:newsletters_notifications_titre" parent="menu_edition"  icone="images/newsletters_notifications-16.png" />
+		* parents d'onglets... configuration, plugins, statistiques, ... 
+		<onglet nom="newsletters_notifications" titre="newsletters_notifications:newsletters_notifications_titre" parent="configuration" icone="images/newsletters_notifications-24.png" />
+	-->
+
+
+
+
+</paquet>
