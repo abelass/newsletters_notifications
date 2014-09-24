@@ -35,6 +35,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_page_configurer_newsletters_notifications' => 'Paramètres Notifications pour Newsletters',
 	
 	//U
+	'une_inscription_de' => 'Une inscription de : ',
 	'une_inscription_sur' => 'Une inscription sur @nom@',
 );
 

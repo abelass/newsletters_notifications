@@ -15,12 +15,29 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 function newsletters_notifications_formulaire_traiter($flux){
 	// envoyer un notification de l'inscription
 	if ($flux['args']['form'] == 'newsletter_subscribe') {
-		echo serialize($flux);
-		if(isset($flux['data']['message_ok']))echo 'ok;'
+
+		if(isset($flux['data']['message_ok'])){
+			
+			 // Notifications
+
+		    if ($notifications = charger_fonction('notifications', 'inc', true)) {
+
+			    include_spip('inc/config');
+			    $options = array('config'=>lire_config('newsletters_notifications'),'email_inscription'=>_request('session_email'));
+				$listes=$flux['args']['args'][0];	
+					
+				if ($listes AND is_string($listes))
+				$listes = explode(',',$listes);
+		
+		        // Envoyer aux admins
+		        $notifications('inscription_newsletter', $listes, $options);
+		            
+		    }
+					
+			
+		}
 	}
 	return $flux;
 }
-
-
 
 ?>

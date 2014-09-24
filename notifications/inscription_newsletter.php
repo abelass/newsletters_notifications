@@ -2,14 +2,18 @@
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
 
-function notifications_inscription_newslettter_dist($quoi,$id_list, $options) {
-    include_spip('inc/config');
-    $config = lire_config('newsletters_notifications');
+function notifications_inscription_newsletter_dist($quoi,$listes, $options=array()) {
 
     $envoyer_mail = charger_fonction('envoyer_mail','inc');
+	$config=$options['config'];
     
-    $options['$id_list']=$id_list; 
-//    $options['qui']='vendeur';  
+    $options['listes']=$listes; 
+	
+    // Determiner l'expediteur
+
+    if( $config['expediteur'] != "facteur" )
+        $options['expediteur'] = $config['expediteur_'.$config['expediteur']];
+	
     $dest=(isset($config['vendeur_'.$config['vendeur']]) AND intval($config['vendeur_'.$config['vendeur']])) ?$config['vendeur_'.$config['vendeur']]:1;
     
     $sql=sql_select('email','spip_auteurs','id_auteur IN ('.implode(',',$dest).')');
@@ -19,7 +23,6 @@ function notifications_inscription_newslettter_dist($quoi,$id_list, $options) {
         }
 
     $subject=_T('newsletters_notifications:une_inscription_sur',array('nom'=>$GLOBALS['meta']['nom_site']));   
-  
 
     $message=recuperer_fond('notifications/contenu_inscription_newslettter_mail',$options);
      
