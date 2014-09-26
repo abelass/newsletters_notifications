@@ -5,12 +5,18 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
+	//B
+	'bonjour'=>'Bonjour',
+
 	// C
 	'choix_listes'=>'Choix des mailinglists',
 	'cfg_titre_parametrages' => 'Paramétrages',
 	
 	//E
 	'explication_choix_listes'=>'Si rien n\'est choisit, une notification sera envoyé pour chaque liste',
+	
+	//I
+	'inscription_liste'=>'Pour la/les mailing-liste(s) : ',
 	
 	//L
 	'label_choix_listes'=>'Choissizes les listes qui déclenchereront une notification',	
