@@ -42,7 +42,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	
 	//U
 	'une_inscription_de' => 'Une inscription de : ',
-	'une_desinscription_de' => 'Une désinscription de : ',	
+	'une_desinscription_de' => 's\'est désinscrit.',	
 	'une_inscription_sur' => 'Une inscription sur @nom@',
 	'une_desinscription_sur' => 'Une désinscription sur @nom@',	
 );

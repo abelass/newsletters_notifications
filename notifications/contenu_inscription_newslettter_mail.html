@@ -1,21 +1,35 @@
 #HTTP_HEADER{Content-Type:text/html}
 #INCLURE{fond=emails/inc-haut}
-<p><:newsletters_notifications:bonjour:></p>
+<p>
+	<:newsletters_notifications:bonjour:>
+</p>
+<BOUCLE_mailsubscriber(MAILSUBSCRIBERS){id_mailsubscriber}{tout}>
+	#SET{email,#EMAIL}
+	#SET{listes,#LISTES}
+	</BOUCLE_mailsubscriber>
 
-<p>[(#TYPE|=={subscribe}|?{
-	<:newsletters_notifications:une_inscription_de:>,
-	<:newsletters_notifications:une_desinscription_de:>
-})] #EMAIL_INSCRIPTION</p>
-[(#TYPE|=={subscribe}|oui)
-<p><:newsletters_notifications:inscription_liste:> [(#LISTES**|implode{','})]</p>]
+	<p>
+		[(#TYPE|=={subscribe}|oui)
+		<:newsletters_notifications:une_inscription_de:> #GET{email}.]
+		[(#TYPE|=={unsubscribe}|oui)		
+		[(#GET{email}) ]<:newsletters_notifications:une_desinscription_de:>]
+	</p>
+	[(#TYPE|=={subscribe}|oui)
+	<p>
+		<:newsletters_notifications:inscription_liste:> #GET{listes}
+	</p>]
 
-<p>#NOM_SITE_SPIP</p>
+	<p>
+		#NOM_SITE_SPIP
+	</p>
 
-<hr />
-<p><a href="#URL_SITE_SPIP">#URL_SITE_SPIP</a></p>
+	<hr />
+	<p>
+		<a href="#URL_SITE_SPIP">#URL_SITE_SPIP</a>
+	</p>
 
-[(#ENV{format_envoi}|=={plain}|oui)
+	[(#ENV{format_envoi}|=={plain}|oui)
 	#FILTRE{supprimer_tags|filtrer_entites|trim}]
-[(#ENV{format_envoi}|=={plain}|non)
+	[(#ENV{format_envoi}|=={plain}|non)
 	#FILTRE{filtrer_entites|trim}]
-#INCLURE{fond=emails/inc-bas}
+	#INCLURE{fond=emails/inc-bas}

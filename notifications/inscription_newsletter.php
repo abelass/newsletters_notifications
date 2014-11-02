@@ -2,14 +2,13 @@
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
 
-function notifications_inscription_newsletter_dist($quoi,$listes, $options=array()) {
+function notifications_inscription_newsletter_dist($quoi,$id, $options=array()) {
 
     $envoyer_mail = charger_fonction('envoyer_mail','inc');
 	$config=$options['config'];
     
-    $options['listes']=$listes; 
+    $options['id_mailsubscriber']=$id; 
 	
-	spip_log($options['type'],'teste');
 	if(isset($options['type'])){
 		// Determiner l'expediteur
 
