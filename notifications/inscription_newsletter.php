@@ -22,7 +22,8 @@ function notifications_inscription_newsletter_dist($quoi,$listes, $options=array
         $email[]=$data['email'];        
         }
 
-    $subject=_T('newsletters_notifications:une_inscription_sur',array('nom'=>$GLOBALS['meta']['nom_site']));   
+    if($options['type'] =='subscribe')$subject=_T('newsletters_notifications:une_inscription_sur',array('nom'=>$GLOBALS['meta']['nom_site'])); 
+	else  $subject=_T('newsletters_notifications:une_desinscription_sur',array('nom'=>$GLOBALS['meta']['nom_site'])); 
 
     $message=recuperer_fond('notifications/contenu_inscription_newslettter_mail',$options);
      

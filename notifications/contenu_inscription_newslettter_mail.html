@@ -2,10 +2,12 @@
 #INCLURE{fond=emails/inc-haut}
 <p><:newsletters_notifications:bonjour:></p>
 
-<p><:newsletters_notifications:une_inscription_de:> #EMAIL_INSCRIPTION</p>
-
-<p><:newsletters_notifications:inscription_liste:> [(#LISTES**|implode{','})]</p>
-
+<p>[(#TYPE|=={subscribe}|?{
+	<:newsletters_notifications:une_inscription_de:>,
+	<:newsletters_notifications:une_desinscription_de:>
+})] #EMAIL_INSCRIPTION</p>
+[(#TYPE|=={subscribe}|oui)
+<p><:newsletters_notifications:inscription_liste:> [(#LISTES**|implode{','})]</p>]
 
 <p>#NOM_SITE_SPIP</p>
 

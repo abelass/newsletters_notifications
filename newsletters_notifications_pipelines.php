@@ -9,39 +9,30 @@
  * @package    SPIP\Newsletters_notifications\Pipelines
  */
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
-	
+if (!defined('_ECRIRE_INC_VERSION'))
+	return;
 
-function newsletters_notifications_formulaire_traiter($flux){
+function newsletters_notifications_formulaire_traiter($flux) {
 	// envoyer un notification de l'inscription
-	if ($flux['args']['form'] == 'newsletter_subscribe') {
+	$form=$flux['args']['form'];
+	if ($form == 'newsletter_subscribe' OR $form='newsletter_unubscribe') {
 
-		if(isset($flux['data']['message_ok'])){
-			
-			 // Notifications
-
-		    if ($notifications = charger_fonction('notifications', 'inc', true)) {
-		    	
+		if (isset($flux['data']['message_ok'])) {
+			$type=($form == 'newsletter_subscribe')?'subscribe':'unsubscribe';
+			// Notifications
+			if ($notifications = charger_fonction('notifications', 'inc', true)) {
 				// To do choix des listes selon la config
-
-			    include_spip('inc/config');
-			    $options = array('config'=>lire_config('newsletters_notifications'),'email_inscription'=>_request('session_email'));
-				$listes=$flux['args']['args'][0];	
-					
+				$email_inscription=_request('session_email')?_request('session_email'):_request('email_unsubscribe');
+				include_spip('inc/config');
+				$options = array('config' => lire_config('newsletters_notifications'), 'email_inscription' => $email_inscription,'type'=>$type);
+				$listes = $flux['args']['args'][0];
 				if ($listes AND is_string($listes))
-				$listes = explode(',',$listes);
-				
-				
-		
-		        // Envoyer aux admins
-		        $notifications('inscription_newsletter', $listes, $options);
-		            
-		    }
-					
-			
+					$listes = explode(',', $listes);
+
+				// Envoyer aux admins
+				$notifications('inscription_newsletter', $listes, $options);
+			}
 		}
 	}
 	return $flux;
 }
-
-?>
