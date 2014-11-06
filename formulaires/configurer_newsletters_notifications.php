@@ -29,7 +29,7 @@ function formulaires_configurer_newsletters_notifications_saisies_dist(){
 	}
 
 	return array(
-		array(
+		/*array(
 			'saisie' => 'fieldset',
 			'options' => array(
 				'nom' => 'fieldset_parametres',
@@ -46,9 +46,9 @@ function formulaires_configurer_newsletters_notifications_saisies_dist(){
                         'explication' => _T('newsletters_notifications:explication_choix_listes'),
                         'defaut' => $config['lists'],                                                
                     )
-                ),                                             
-            )            
-		),
+                ),                                               
+            )         
+		),*/ 
 		array(
 			'saisie' => 'fieldset',
 			'options' => array(
