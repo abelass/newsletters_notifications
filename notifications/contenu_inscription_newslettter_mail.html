@@ -4,25 +4,21 @@
 	<:newsletters_notifications:bonjour:>
 </p>
 <BOUCLE_mailsubscriber(MAILSUBSCRIBERS){id_mailsubscriber}{tout}>
-	#SET{email,#EMAIL}
-	#SET{listes,#LISTES}
-	</BOUCLE_mailsubscriber>
-
 	<p>
 		[(#TYPE|=={subscribe}|oui)
-		<:newsletters_notifications:une_inscription_de:> #GET{email}.]
+		<:newsletters_notifications:une_inscription_de:> #EMAIL.]
 		[(#TYPE|=={unsubscribe}|oui)		
-		[(#GET{email}) ]<:newsletters_notifications:une_desinscription_de:>]
+		[(#EMAIL) ]<:newsletters_notifications:une_desinscription_de:>]
 	</p>
 	[(#TYPE|=={subscribe}|oui)
 	<p>
-		<:newsletters_notifications:inscription_liste:> #GET{listes}
+		<:newsletters_notifications:inscription_liste:> #LISTES
 	</p>]
 	
 	<p>
 		Log : #OPTIN
 	</p>
-
+	</BOUCLE_mailsubscriber>
 	<p>
 		#NOM_SITE_SPIP
 	</p>
