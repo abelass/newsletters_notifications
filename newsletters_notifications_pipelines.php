@@ -41,3 +41,15 @@ function newsletters_notifications_post_edition($flux) {
 		}
 	return $flux;
 	}
+
+// Définitions des notifications pour https://github.com/abelass/notifications_archive
+function newsletters_notifications_notifications_archive($flux){
+   $flux=array_merge($flux,array(
+    'inscription_newsletter'=>array(
+        'duree'=>'180'  
+        )        
+   )
+);
+       
+    return $flux;   
+}
