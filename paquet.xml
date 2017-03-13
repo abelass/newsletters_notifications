@@ -3,10 +3,10 @@
 	categorie="communication"
 	version="1.1.1"
 	etat="test"
-	compatibilite="[3.0.17;3.0.*]"
+	compatibilite="[3.0.17;3.1.*]"
 	logo="prive/themes/spip/images/newsletters_notifications-64.png"
 	documentation=""
-	schema="1.0.0" 
+	schema="1.0.0"
 >
 
 	<nom>Notifications pour Newsletters</nom>
@@ -16,9 +16,9 @@
 	<licence>GNU/GPL</licence>
 
 	<necessite nom="mailsubscribers" compatibilite="[1.5.5;]" />
-	
+
 	<pipeline nom="post_edition" inclure="newsletters_notifications_pipelines.php" />
-	<pipeline nom="notifications_archive" inclure="newsletters_notifications_pipelines.php" />	
+	<pipeline nom="notifications_archive" inclure="newsletters_notifications_pipelines.php" />
 
 
 </paquet>
